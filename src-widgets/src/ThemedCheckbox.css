@@ -1,56 +1,55 @@
-.switch {
-  --button-width: 3.5em;
-  --button-height: 2em;
-  --toggle-diameter: 1.5em;
-  --button-toggle-offset: calc((var(--button-height) - var(--toggle-diameter)) / 2);
-  --toggle-shadow-offset: 10px;
-  --toggle-wider: 3em;
-  --color-grey: #cccccc;
-  --color-green: #4296f4;
+.neu-switch {
+  position: relative;
   display: inline-block;
+  width: 80px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.neu-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
 }
 
 .slider {
-  display: inline-block;
-  width: var(--button-width);
-  height: var(--button-height);
-  background-color: var(--color-grey);
-  border-radius: calc(var(--button-height) / 2);
-  position: relative;
-  transition: 0.3s all ease-in-out;
-}
-
-.slider::after {
-  content: "";
-  display: inline-block;
-  width: var(--toggle-diameter);
-  height: var(--toggle-diameter);
-  background-color: #fff;
-  border-radius: calc(var(--toggle-diameter) / 2);
   position: absolute;
-  top: var(--button-toggle-offset);
-  transform: translateX(var(--button-toggle-offset));
-  box-shadow: var(--toggle-shadow-offset) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
-  transition: 0.3s all ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #737373;
+  border-radius: 40px;
+  box-shadow:
+    inset 4px 4px 8px rgba(0, 0, 0, 0.4),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.25);
+  transition: all 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
 }
 
-.switch input[type="checkbox"]:checked + .slider {
-  background-color: var(--color-green);
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 32px;
+  width: 32px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #737373;
+  border-radius: 50%;
+  box-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.4),
+    -3px -3px 6px rgba(255, 255, 255, 0.25);
+  transition: all 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
 }
 
-.switch input[type="checkbox"]:checked + .slider::after {
-  transform: translateX(calc(var(--button-width) - var(--toggle-diameter) - var(--button-toggle-offset)));
-  box-shadow: calc(var(--toggle-shadow-offset) * -1) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+.neu-switch input:checked + .slider::before {
+  transform: translateX(40px);
+  background: linear-gradient(145deg, #7b7b7b, #6b6b6b);
 }
 
-.switch input[type="checkbox"] {
-  display: none;
-}
-
-.switch input[type="checkbox"]:active + .slider::after {
-  width: var(--toggle-wider);
-}
-
-.switch input[type="checkbox"]:checked:active + .slider::after {
-  transform: translateX(calc(var(--button-width) - var(--toggle-wider) - var(--button-toggle-offset)));
+.neu-switch input:checked + .slider {
+  box-shadow:
+    inset 4px 4px 8px rgba(0, 0, 0, 0.4),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.25),
+    inset 0 0 12px rgba(78, 205, 196, 0.35);
 }

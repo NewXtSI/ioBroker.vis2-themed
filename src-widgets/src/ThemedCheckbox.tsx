@@ -78,7 +78,7 @@ export default class ThemedCheckbox extends (window.visRxWidget as typeof VisRxW
           justifyContent: 'flex-start'
         }}
       >
-        <label className="switch">
+        <label className="neu-switch">
           <input type="checkbox" checked={checked} onChange={this.onToggle} />
           <span className="slider" />
         </label>
