@@ -1,6 +1,7 @@
 import React from 'react';
 import type { RxRenderWidgetProps, RxWidgetInfo, VisRxWidgetProps, VisRxWidgetState } from '@iobroker/types-vis-2';
 import type VisRxWidget from '@iobroker/types-vis-2/visRxWidget';
+import './ThemedCheckbox.css';
 
 interface CheckboxRxData {
   oid: string;
@@ -66,7 +67,6 @@ export default class ThemedCheckbox extends (window.visRxWidget as typeof VisRxW
     const stateId = this.state.rxData.oid;
     const value = stateId ? this.state.values[`${stateId}.val`] : false;
     const checked = Boolean(value);
-    const label = this.state.rxData.text || ThemedCheckbox.t('themed_checkbox_default_text');
 
     return (
       <div
@@ -75,17 +75,13 @@ export default class ThemedCheckbox extends (window.visRxWidget as typeof VisRxW
           height: '100%',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'flex-start',
-          gap: 8
+          justifyContent: 'flex-start'
         }}
       >
-        <input
-          type="checkbox"
-          checked={checked}
-          onChange={this.onToggle}
-          style={{ width: 18, height: 18, accentColor: '#1a7f64' }}
-        />
-        <span>{label}</span>
+        <label className="switch">
+          <input type="checkbox" checked={checked} onChange={this.onToggle} />
+          <span className="slider" />
+        </label>
       </div>
     );
   }

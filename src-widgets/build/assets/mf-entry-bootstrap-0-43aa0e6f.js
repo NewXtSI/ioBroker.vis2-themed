@@ -25,7 +25,7 @@ const __mfImport = (src) =>
 
 
 (async () => {
-  const __mfHostInit = await __mfImport("./hostInit-CZBvsGLH.js");
+  const __mfHostInit = await __mfImport("./hostInit-KXu5HEXp.js");
   await __mfHostInit.__tla;
   const { initHost } = __mfHostInit;
   await initHost();

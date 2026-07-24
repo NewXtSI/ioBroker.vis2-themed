@@ -7,8 +7,8 @@
     "file": "assets/_virtual_mf___mfe_internal__vis2ThemedWidgets__mf_owner__1__loadShare__react__loadShare__.js-l0sNRNKZ.js",
     "name": "_virtual_mf___mfe_internal__vis2ThemedWidgets__mf_owner__1__loadShare__react__loadShare__.js"
   },
-  "__virtual_mf___mfe_internal__vis2ThemedWidgets__mf_owner__1__loadShare__react_mf_1_jsx_mf_2_runtime__loadShare__.js-BmO1xsl-.js": {
-    "file": "assets/_virtual_mf___mfe_internal__vis2ThemedWidgets__mf_owner__1__loadShare__react_mf_1_jsx_mf_2_runtime__loadShare__.js-BmO1xsl-.js",
+  "__virtual_mf___mfe_internal__vis2ThemedWidgets__mf_owner__1__loadShare__react_mf_1_jsx_mf_2_runtime__loadShare__.js-CiUX0WNm.js": {
+    "file": "assets/_virtual_mf___mfe_internal__vis2ThemedWidgets__mf_owner__1__loadShare__react_mf_1_jsx_mf_2_runtime__loadShare__.js-CiUX0WNm.js",
     "name": "_virtual_mf___mfe_internal__vis2ThemedWidgets__mf_owner__1__loadShare__react_mf_1_jsx_mf_2_runtime__loadShare__.js",
     "isDynamicEntry": true,
     "imports": [
@@ -30,14 +30,17 @@
     "isEntry": true
   },
   "src/ThemedCheckbox.tsx": {
-    "file": "assets/ThemedCheckbox-BoLAUtzq.js",
+    "file": "assets/ThemedCheckbox-BmDJlyEA.js",
     "name": "ThemedCheckbox",
     "src": "src/ThemedCheckbox.tsx",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "__virtual_mf___mfe_internal__vis2ThemedWidgets__mf_owner__1__loadShare__react_mf_1_jsx_mf_2_runtime__loadShare__.js-BmO1xsl-.js",
+      "__virtual_mf___mfe_internal__vis2ThemedWidgets__mf_owner__1__loadShare__react_mf_1_jsx_mf_2_runtime__loadShare__.js-CiUX0WNm.js",
       "___virtual_mf___mfe_internal__vis2ThemedWidgets__mf_owner__1__loadShare__react__loadShare__.js_commonjs-proxy-BN8L-M7j.js"
+    ],
+    "css": [
+      "assets/ThemedCheckbox-oX-iNgVx.css"
     ]
   },
   "src/translations.ts": {
@@ -62,7 +65,7 @@
     ]
   },
   "virtual:mf-exposes:__mfe_internal__vis2ThemedWidgets__customWidgets_js": {
-    "file": "assets/virtualExposes-CmLNHrB6.js",
+    "file": "assets/virtualExposes-B2XiP5za.js",
     "name": "virtualExposes",
     "src": "virtual:mf-exposes:__mfe_internal__vis2ThemedWidgets__customWidgets_js",
     "isDynamicEntry": true,
@@ -75,7 +78,7 @@
     ]
   },
   "virtual:mf-localSharedImportMap:__mfe_internal__vis2ThemedWidgets__mf_owner__1": {
-    "file": "assets/_virtual_mf-localSharedImportMap___mfe_internal__vis2ThemedWidgets__mf_owner__1-BTsLLUpv.js",
+    "file": "assets/_virtual_mf-localSharedImportMap___mfe_internal__vis2ThemedWidgets__mf_owner__1-CEbqsrPX.js",
     "name": "_virtual_mf-localSharedImportMap___mfe_internal__vis2ThemedWidgets__mf_owner__1",
     "src": "virtual:mf-localSharedImportMap:__mfe_internal__vis2ThemedWidgets__mf_owner__1",
     "isDynamicEntry": true,
@@ -85,12 +88,12 @@
     ],
     "dynamicImports": [
       "virtual:mf:__mfe_internal__vis2ThemedWidgets__mf_owner__1__prebuild__react__prebuild__.js",
-      "__virtual_mf___mfe_internal__vis2ThemedWidgets__mf_owner__1__loadShare__react_mf_1_jsx_mf_2_runtime__loadShare__.js-BmO1xsl-.js",
+      "__virtual_mf___mfe_internal__vis2ThemedWidgets__mf_owner__1__loadShare__react_mf_1_jsx_mf_2_runtime__loadShare__.js-CiUX0WNm.js",
       "virtual:mf:__mfe_internal__vis2ThemedWidgets__mf_owner__1__prebuild__react_mf_2_dom__prebuild__.js"
     ]
   },
   "virtual:mf:__mfe_internal__vis2ThemedWidgets__mf_owner__1__H_A_I__hostAutoInit__H_A_I__.js": {
-    "file": "assets/hostInit-CZBvsGLH.js",
+    "file": "assets/hostInit-KXu5HEXp.js",
     "name": "hostInit",
     "src": "virtual:mf:__mfe_internal__vis2ThemedWidgets__mf_owner__1__H_A_I__hostAutoInit__H_A_I__.js",
     "imports": [
