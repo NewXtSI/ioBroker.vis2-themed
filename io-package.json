@@ -1,0 +1,52 @@
+{
+  "common": {
+    "name": "vis2-themed",
+    "version": "0.0.1",
+    "titleLang": {
+      "en": "vis2 themed widgets",
+      "de": "vis2 themed widgets"
+    },
+    "desc": {
+      "en": "Themed base widgets for vis2",
+      "de": "Themed Basis-Widgets fuer vis2"
+    },
+    "authors": [
+      "henni"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "platform": "Javascript/Node.js",
+    "mode": "none",
+    "type": "visualization-widgets",
+    "icon": "vis2-themed.svg",
+    "enabled": true,
+    "onlyWWW": true,
+    "connectionType": "cloud",
+    "dataSource": "poll",
+    "visWidgets": {
+      "vis2ThemedWidgets": {
+        "i18n": "component",
+        "name": "vis2-themed",
+        "url": "vis2-themed/customWidgets.js",
+        "bundlerType": "module",
+        "components": [
+          "ThemedCheckbox"
+        ]
+      }
+    },
+    "dependencies": [
+      {
+        "vis-2": ">=2.12.8"
+      }
+    ],
+    "restartAdapters": [
+      "vis-2"
+    ],
+    "tier": 3
+  },
+  "native": {},
+  "objects": [],
+  "instanceObjects": []
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="themed checkbox preview">
+  <rect width="320" height="180" rx="16" fill="#f5f8f6"/>
+  <rect x="28" y="70" width="28" height="28" rx="6" fill="#1a7f64"/>
+  <path d="M35 84l6 6 10-10" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="68" y="73" width="118" height="22" rx="8" fill="#9eb9b0"/>
+</svg>

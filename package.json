@@ -1,0 +1,31 @@
+{
+  "name": "iobroker.vis2-themed",
+  "version": "0.0.1",
+  "description": "ioBroker vis2 themed widgets",
+  "author": "henni",
+  "license": "MIT",
+  "repository": {
+    "type": "git"
+  },
+  "keywords": [
+    "ioBroker",
+    "vis-2",
+    "widgets",
+    "themed"
+  ],
+  "main": "widgets/vis2-themed/customWidgets.js",
+  "files": [
+    "admin/",
+    "widgets/",
+    "io-package.json",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node tasks",
+    "build-widget": "cd src-widgets && npm run build",
+    "copy-files": "node tasks --copy-files"
+  },
+  "devDependencies": {
+    "@iobroker/build-tools": "^3.0.1"
+  }
+}
