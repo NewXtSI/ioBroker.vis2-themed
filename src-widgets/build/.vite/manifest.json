@@ -30,7 +30,7 @@
     "isEntry": true
   },
   "src/ThemedCheckbox.tsx": {
-    "file": "assets/ThemedCheckbox-L05D8h4l.js",
+    "file": "assets/ThemedCheckbox-BoLAUtzq.js",
     "name": "ThemedCheckbox",
     "src": "src/ThemedCheckbox.tsx",
     "isEntry": true,
@@ -41,7 +41,7 @@
     ]
   },
   "src/translations.ts": {
-    "file": "assets/translations-BG965aXe.js",
+    "file": "assets/translations-D9vSwyRo.js",
     "name": "translations",
     "src": "src/translations.ts",
     "isEntry": true,
@@ -62,7 +62,7 @@
     ]
   },
   "virtual:mf-exposes:__mfe_internal__vis2ThemedWidgets__customWidgets_js": {
-    "file": "assets/virtualExposes-DqVrBOzD.js",
+    "file": "assets/virtualExposes-CmLNHrB6.js",
     "name": "virtualExposes",
     "src": "virtual:mf-exposes:__mfe_internal__vis2ThemedWidgets__customWidgets_js",
     "isDynamicEntry": true,

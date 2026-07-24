@@ -27,20 +27,15 @@ export default class ThemedCheckbox extends (window.visRxWidget as typeof VisRxW
           name: 'common',
           fields: [
             {
+              name: 'oid',
+              label: 'themed_checkbox_oid',
+              type: 'id'
+            },
+            {
               name: 'text',
               label: 'themed_checkbox_label',
               type: 'text',
               default: 'Checkbox'
-            }
-          ]
-        },
-        {
-          name: 'data',
-          fields: [
-            {
-              name: 'oid',
-              label: 'themed_checkbox_oid',
-              type: 'id'
             }
           ]
         }
@@ -62,7 +57,7 @@ export default class ThemedCheckbox extends (window.visRxWidget as typeof VisRxW
     if (!targetId) {
       return;
     }
-    this.props.context.setValue(`${targetId}.val`, event.target.checked);
+    this.props.context.setValue(targetId, event.target.checked);
   };
 
   renderWidgetBody(props: RxRenderWidgetProps): React.JSX.Element {

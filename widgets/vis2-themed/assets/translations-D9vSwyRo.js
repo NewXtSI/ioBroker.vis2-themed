@@ -1,0 +1,1 @@
+const e="vis2-themed",t="Label",c="Object ID",_="Checkbox",h={vis2_themed_set_label:e,themed_checkbox_label:t,themed_checkbox_oid:c,themed_checkbox_default_text:_},o="vis2-themed",d="Beschriftung",b="Object ID",s="Checkbox",l={vis2_themed_set_label:o,themed_checkbox_label:d,themed_checkbox_oid:b,themed_checkbox_default_text:s},x={en:h,de:l,prefix:!0};export{x as default};
