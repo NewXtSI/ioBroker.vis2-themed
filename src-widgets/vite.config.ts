@@ -15,6 +15,7 @@ export default {
       filename: 'customWidgets.js',
       exposes: {
         './ThemedCheckbox': './src/ThemedCheckbox',
+        './ThemedButton': './src/ThemedButton',
         './translations': './src/translations'
       },
       remotes: {},

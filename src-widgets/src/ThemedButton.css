@@ -1,0 +1,50 @@
+.neu-button input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.btn-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background-color: #737373;
+  color: #e0e0e0;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 12px;
+  cursor: pointer;
+  user-select: none;
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.4),
+    -6px -6px 12px rgba(255, 255, 255, 0.25);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.neu-button:hover .btn-content {
+  color: #ffffff;
+  box-shadow:
+    8px 8px 16px rgba(0, 0, 0, 0.45),
+    -8px -8px 16px rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.neu-button input:checked + .btn-content {
+  box-shadow:
+    inset 4px 4px 8px rgba(0, 0, 0, 0.45),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.25);
+  transform: translateY(2px);
+  color: #4ecdc4;
+  text-shadow: 0 0 8px rgba(78, 205, 196, 0.4);
+}
+
+.icon {
+  transition: transform 0.3s ease;
+}
+
+.neu-button input:checked + .btn-content .icon {
+  transform: scale(0.92);
+}

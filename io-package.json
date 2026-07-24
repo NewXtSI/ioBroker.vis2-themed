@@ -32,7 +32,8 @@
         "url": "vis2-themed/customWidgets.js",
         "bundlerType": "module",
         "components": [
-          "ThemedCheckbox"
+          "ThemedCheckbox",
+          "ThemedButton"
         ]
       }
     },

@@ -29,6 +29,20 @@
     "src": "index.html",
     "isEntry": true
   },
+  "src/ThemedButton.tsx": {
+    "file": "assets/ThemedButton-COhN9yIY.js",
+    "name": "ThemedButton",
+    "src": "src/ThemedButton.tsx",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "__virtual_mf___mfe_internal__vis2ThemedWidgets__mf_owner__1__loadShare__react_mf_1_jsx_mf_2_runtime__loadShare__.js-CiUX0WNm.js",
+      "___virtual_mf___mfe_internal__vis2ThemedWidgets__mf_owner__1__loadShare__react__loadShare__.js_commonjs-proxy-BN8L-M7j.js"
+    ],
+    "css": [
+      "assets/ThemedButton-BJRYuTSg.css"
+    ]
+  },
   "src/ThemedCheckbox.tsx": {
     "file": "assets/ThemedCheckbox-D2wL2sLG.js",
     "name": "ThemedCheckbox",
@@ -44,7 +58,7 @@
     ]
   },
   "src/translations.ts": {
-    "file": "assets/translations-D9vSwyRo.js",
+    "file": "assets/translations-Df8BmxwU.js",
     "name": "translations",
     "src": "src/translations.ts",
     "isEntry": true,
@@ -65,7 +79,7 @@
     ]
   },
   "virtual:mf-exposes:__mfe_internal__vis2ThemedWidgets__customWidgets_js": {
-    "file": "assets/virtualExposes-D-DJR9Vy.js",
+    "file": "assets/virtualExposes-C_9gDw_K.js",
     "name": "virtualExposes",
     "src": "virtual:mf-exposes:__mfe_internal__vis2ThemedWidgets__customWidgets_js",
     "isDynamicEntry": true,
@@ -74,6 +88,7 @@
     ],
     "dynamicImports": [
       "src/ThemedCheckbox.tsx",
+      "src/ThemedButton.tsx",
       "src/translations.ts"
     ]
   },

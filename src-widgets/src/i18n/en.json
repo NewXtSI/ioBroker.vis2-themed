@@ -2,5 +2,8 @@
   "vis2_themed_set_label": "vis2-themed",
   "themed_checkbox_label": "Label",
   "themed_checkbox_oid": "Object ID",
-  "themed_checkbox_default_text": "Checkbox"
+  "themed_checkbox_default_text": "Checkbox",
+  "themed_button_label": "Label",
+  "themed_button_oid": "Object ID",
+  "themed_button_default_text": "System aktiv"
 }
