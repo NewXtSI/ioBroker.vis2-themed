@@ -15,5 +15,6 @@
   "themed_bar_min": "Min",
   "themed_bar_max": "Max",
   "themed_bar_use_accent": "Use accent color",
-  "themed_bar_color": "Fill color"
+  "themed_bar_color": "Fill color",
+  "themed_bar_vertical": "Vertical"
 }

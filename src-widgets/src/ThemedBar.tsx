@@ -9,6 +9,7 @@ interface BarRxData {
   max: number;
   color: string;
   useAccent: boolean;
+  vertical: boolean;
 }
 
 export default class ThemedBar extends (window.visRxWidget as typeof VisRxWidget)<BarRxData, VisRxWidgetState> {
@@ -56,6 +57,12 @@ export default class ThemedBar extends (window.visRxWidget as typeof VisRxWidget
               label: 'themed_bar_color',
               type: 'color',
               default: ''
+            },
+            {
+              name: 'vertical',
+              label: 'themed_bar_vertical',
+              type: 'checkbox',
+              default: false
             }
           ]
         }
@@ -82,18 +89,20 @@ export default class ThemedBar extends (window.visRxWidget as typeof VisRxWidget
     const max = Number.isFinite(this.state.rxData.max) ? this.state.rxData.max : 100;
     const range = max - min <= 0 ? 1 : max - min;
     const progress = Math.max(0, Math.min(1, (value - min) / range));
-    const width = `${progress * 100}%`;
+    const size = `${progress * 100}%`;
     const useAccent = this.state.rxData.useAccent !== false;
+    const vertical = this.state.rxData.vertical === true;
     const customColor = (this.state.rxData.color || '').trim();
-    const fillStyle: React.CSSProperties = {
-      width,
-      background: customColor || undefined
-    };
+    const fillStyle: React.CSSProperties = vertical ? { height: size } : { width: size };
+
+    if (customColor) {
+      (fillStyle as React.CSSProperties & { '--fill-color': string })['--fill-color'] = customColor;
+    }
 
     return (
       <div className="themed-bar-root">
-        <div className={`neu-bar ${useAccent ? 'with-accent' : 'no-accent'}`}>
-          <div className="neu-bar-fill" style={fillStyle} />
+        <div className={`neu-bar ${useAccent ? 'with-accent' : 'no-accent'} ${vertical ? 'vertical' : 'horizontal'}`}>
+          <div className={`neu-bar-fill ${customColor ? 'custom-color' : ''}`} style={fillStyle} />
         </div>
       </div>
     );

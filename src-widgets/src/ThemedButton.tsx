@@ -133,8 +133,6 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
     if (this.state.rxData.pushToggle) {
       return;
     }
-
-    this.writeValue(false);
   };
 
   renderWidgetBody(props: RxRenderWidgetProps): React.JSX.Element {

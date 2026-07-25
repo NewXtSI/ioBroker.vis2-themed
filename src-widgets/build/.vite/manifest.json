@@ -30,7 +30,7 @@
     "isEntry": true
   },
   "src/ThemedBar.tsx": {
-    "file": "assets/ThemedBar-D7auRbal.js",
+    "file": "assets/ThemedBar-Bs7eYD9B.js",
     "name": "ThemedBar",
     "src": "src/ThemedBar.tsx",
     "isEntry": true,
@@ -40,11 +40,11 @@
       "___virtual_mf___mfe_internal__vis2ThemedWidgets__mf_owner__1__loadShare__react__loadShare__.js_commonjs-proxy-BN8L-M7j.js"
     ],
     "css": [
-      "assets/ThemedBar-CE23kRVJ.css"
+      "assets/ThemedBar-CedhxGB-.css"
     ]
   },
   "src/ThemedButton.tsx": {
-    "file": "assets/ThemedButton-TCOIOfQ0.js",
+    "file": "assets/ThemedButton-CZ85zPmA.js",
     "name": "ThemedButton",
     "src": "src/ThemedButton.tsx",
     "isEntry": true,
@@ -72,7 +72,7 @@
     ]
   },
   "src/translations.ts": {
-    "file": "assets/translations-Crt3uGio.js",
+    "file": "assets/translations-58418c7s.js",
     "name": "translations",
     "src": "src/translations.ts",
     "isEntry": true,
@@ -93,7 +93,7 @@
     ]
   },
   "virtual:mf-exposes:__mfe_internal__vis2ThemedWidgets__customWidgets_js": {
-    "file": "assets/virtualExposes-LBy3EKk3.js",
+    "file": "assets/virtualExposes-DslvbvUI.js",
     "name": "virtualExposes",
     "src": "virtual:mf-exposes:__mfe_internal__vis2ThemedWidgets__customWidgets_js",
     "isDynamicEntry": true,

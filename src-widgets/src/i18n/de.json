@@ -15,5 +15,6 @@
   "themed_bar_min": "Minimum",
   "themed_bar_max": "Maximum",
   "themed_bar_use_accent": "Akzentfarbe verwenden",
-  "themed_bar_color": "Fuellfarbe"
+  "themed_bar_color": "Fuellfarbe",
+  "themed_bar_vertical": "Vertikal"
 }
