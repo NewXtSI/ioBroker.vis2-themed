@@ -6,13 +6,23 @@ import './ThemedButton.css';
 interface ButtonRxData {
   oid: string;
   text: string;
+  useAccent: boolean;
+  pushButton: boolean;
 }
 
-export default class ThemedButton extends (window.visRxWidget as typeof VisRxWidget)<ButtonRxData, VisRxWidgetState> {
+interface ButtonState extends VisRxWidgetState {
+  pushActive: boolean;
+}
+
+export default class ThemedButton extends (window.visRxWidget as typeof VisRxWidget)<ButtonRxData, ButtonState> {
   static adapter: string;
 
   constructor(props: VisRxWidgetProps) {
     super(props);
+    this.state = {
+      ...this.state,
+      pushActive: false
+    };
   }
 
   static getWidgetInfo(): RxWidgetInfo {
@@ -35,6 +45,18 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
               label: 'themed_button_label',
               type: 'text',
               default: 'System aktiv'
+            },
+            {
+              name: 'useAccent',
+              label: 'themed_button_use_accent',
+              type: 'checkbox',
+              default: true
+            },
+            {
+              name: 'pushButton',
+              label: 'themed_button_push_mode',
+              type: 'checkbox',
+              default: false
             }
           ]
         }
@@ -51,12 +73,35 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
     return `${ThemedButton.adapter}_`;
   }
 
-  private onToggle = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  private writeValue = (value: boolean): void => {
     const targetId = this.state.rxData.oid;
     if (!targetId) {
       return;
     }
-    this.props.context.setValue(targetId, event.target.checked);
+    this.props.context.setValue(targetId, value);
+  };
+
+  private onToggle = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    if (this.state.rxData.pushButton) {
+      return;
+    }
+    this.writeValue(event.target.checked);
+  };
+
+  private onPressStart = (): void => {
+    if (!this.state.rxData.pushButton) {
+      return;
+    }
+    this.setState({ pushActive: true });
+    this.writeValue(true);
+  };
+
+  private onPressEnd = (): void => {
+    if (!this.state.rxData.pushButton) {
+      return;
+    }
+    this.setState({ pushActive: false });
+    this.writeValue(false);
   };
 
   renderWidgetBody(props: RxRenderWidgetProps): React.JSX.Element {
@@ -64,27 +109,22 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
 
     const stateId = this.state.rxData.oid;
     const value = stateId ? this.state.values[`${stateId}.val`] : false;
-    const checked = Boolean(value);
+    const pushButton = this.state.rxData.pushButton === true;
+    const checked = pushButton ? this.state.pushActive : Boolean(value);
+    const useAccent = this.state.rxData.useAccent !== false;
     const text = this.state.rxData.text || ThemedButton.t('themed_button_default_text');
 
     return (
-      <div
-        style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'flex-start'
-        }}
-      >
-        <label className="neu-button">
+      <div className="themed-button-root">
+        <label
+          className={`neu-button ${useAccent ? 'with-accent' : 'no-accent'}`}
+          onPointerDown={this.onPressStart}
+          onPointerUp={this.onPressEnd}
+          onPointerCancel={this.onPressEnd}
+          onPointerLeave={this.onPressEnd}
+        >
           <input type="checkbox" checked={checked} onChange={this.onToggle} />
-          <span className="btn-content">
-            <svg className="icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none">
-              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-            </svg>
-            {text}
-          </span>
+          <span className="btn-content">{text}</span>
         </label>
       </div>
     );

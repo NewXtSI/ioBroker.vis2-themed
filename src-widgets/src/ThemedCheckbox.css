@@ -1,9 +1,25 @@
+.themed-checkbox-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding: 8px;
+  overflow: hidden;
+}
+
 .neu-switch {
+  --switch-width: clamp(56px, 58%, 80px);
+  --switch-height: calc(var(--switch-width) / 2);
+  --thumb-size: calc(var(--switch-height) - 8px);
   position: relative;
   display: inline-block;
-  width: 80px;
-  height: 40px;
+  width: var(--switch-width);
+  height: var(--switch-height);
   cursor: pointer;
+  min-width: 56px;
+  min-height: 28px;
 }
 
 .neu-switch input {
@@ -20,7 +36,7 @@
   right: 0;
   bottom: 0;
   background-color: #737373;
-  border-radius: 40px;
+  border-radius: var(--switch-height);
   box-shadow:
     inset 4px 4px 8px rgba(0, 0, 0, 0.4),
     inset -4px -4px 8px rgba(255, 255, 255, 0.25);
@@ -30,8 +46,8 @@
 .slider::before {
   position: absolute;
   content: "";
-  height: 32px;
-  width: 32px;
+  height: var(--thumb-size);
+  width: var(--thumb-size);
   left: 4px;
   bottom: 4px;
   background-color: #737373;
@@ -43,13 +59,19 @@
 }
 
 .neu-switch input:checked + .slider::before {
-  transform: translateX(40px);
+  transform: translateX(calc(var(--switch-width) - var(--thumb-size) - 8px));
   background: linear-gradient(145deg, #7b7b7b, #6b6b6b);
 }
 
-.neu-switch input:checked + .slider {
+.neu-switch.with-accent input:checked + .slider {
   box-shadow:
     inset 4px 4px 8px rgba(0, 0, 0, 0.4),
     inset -4px -4px 8px rgba(255, 255, 255, 0.25),
     inset 0 0 12px rgba(78, 205, 196, 0.35);
+}
+
+.neu-switch.no-accent input:checked + .slider {
+  box-shadow:
+    inset 4px 4px 8px rgba(0, 0, 0, 0.4),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.25);
 }

@@ -3,7 +3,10 @@
   "themed_checkbox_label": "Beschriftung",
   "themed_checkbox_oid": "Object ID",
   "themed_checkbox_default_text": "Checkbox",
+  "themed_checkbox_use_accent": "Akzentfarbe verwenden",
   "themed_button_label": "Beschriftung",
   "themed_button_oid": "Object ID",
-  "themed_button_default_text": "System aktiv"
+  "themed_button_default_text": "System aktiv",
+  "themed_button_use_accent": "Akzentfarbe verwenden",
+  "themed_button_push_mode": "Pushbutton-Modus"
 }

@@ -1,3 +1,14 @@
+.themed-button-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding: 10px;
+  overflow: hidden;
+}
+
 .neu-button input {
   opacity: 0;
   width: 0;
@@ -8,16 +19,25 @@
 .btn-content {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px 32px;
+  justify-content: center;
+  box-sizing: border-box;
+  width: clamp(120px, 85%, 260px);
+  min-width: 120px;
+  max-width: 100%;
+  min-height: 48px;
+  padding: clamp(10px, 2.2vh, 16px) clamp(16px, 4.5vw, 32px);
   background-color: #737373;
   color: #e0e0e0;
-  font-size: 16px;
+  font-size: clamp(13px, 1.9vh, 16px);
   font-weight: 600;
   letter-spacing: 0.5px;
   border-radius: 12px;
   cursor: pointer;
   user-select: none;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   box-shadow:
     6px 6px 12px rgba(0, 0, 0, 0.4),
     -6px -6px 12px rgba(255, 255, 255, 0.25);
@@ -41,10 +61,11 @@
   text-shadow: 0 0 8px rgba(78, 205, 196, 0.4);
 }
 
-.icon {
-  transition: transform 0.3s ease;
+.neu-button.no-accent input:checked + .btn-content {
+  color: #e0e0e0;
+  text-shadow: none;
 }
 
-.neu-button input:checked + .btn-content .icon {
-  transform: scale(0.92);
+.neu-button.no-accent:hover .btn-content {
+  color: #eaeaea;
 }

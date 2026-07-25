@@ -6,6 +6,7 @@ import './ThemedCheckbox.css';
 interface CheckboxRxData {
   oid: string;
   text: string;
+  useAccent: boolean;
 }
 
 export default class ThemedCheckbox extends (window.visRxWidget as typeof VisRxWidget)<CheckboxRxData, VisRxWidgetState> {
@@ -37,6 +38,12 @@ export default class ThemedCheckbox extends (window.visRxWidget as typeof VisRxW
               label: 'themed_checkbox_label',
               type: 'text',
               default: 'Checkbox'
+            },
+            {
+              name: 'useAccent',
+              label: 'themed_checkbox_use_accent',
+              type: 'checkbox',
+              default: true
             }
           ]
         }
@@ -67,18 +74,11 @@ export default class ThemedCheckbox extends (window.visRxWidget as typeof VisRxW
     const stateId = this.state.rxData.oid;
     const value = stateId ? this.state.values[`${stateId}.val`] : false;
     const checked = Boolean(value);
+    const useAccent = this.state.rxData.useAccent !== false;
 
     return (
-      <div
-        style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'flex-start'
-        }}
-      >
-        <label className="neu-switch">
+      <div className="themed-checkbox-root">
+        <label className={`neu-switch ${useAccent ? 'with-accent' : 'no-accent'}`}>
           <input type="checkbox" checked={checked} onChange={this.onToggle} />
           <span className="slider" />
         </label>
