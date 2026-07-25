@@ -19,6 +19,7 @@
   "themed_button_icon_color_active": "Symbolfarbe aktiv",
   "themed_button_use_accent": "Akzentfarbe verwenden",
   "themed_button_invert_value": "Wert invertieren",
+  "themed_button_disabled": "Deaktiviert",
   "themed_button_nav_mode": "Navigationsmodus",
   "themed_button_nav_section": "Wenn aktiv, navigiert der Button zur ausgewaehlten Seite statt die Object ID zu schreiben.",
   "themed_button_nav_view": "Zielseite",
@@ -30,5 +31,13 @@
   "themed_bar_max": "Maximum",
   "themed_bar_use_accent": "Akzentfarbe verwenden",
   "themed_bar_color": "Fuellfarbe",
-  "themed_bar_vertical": "Vertikal"
+  "themed_bar_vertical": "Vertikal",
+  "themed_slider_oid": "Object ID",
+  "themed_slider_min": "Minimum",
+  "themed_slider_max": "Maximum",
+  "themed_slider_steps": "Schritte",
+  "themed_slider_write_delay": "Schreibverzoegerung (ms)",
+  "themed_slider_use_accent": "Akzentfarbe verwenden",
+  "themed_slider_vertical": "Vertikal",
+  "themed_slider_color": "Fuellfarbe"
 }

@@ -17,6 +17,10 @@
   justify-content: flex-start;
 }
 
+.neu-button.disabled {
+  pointer-events: none;
+}
+
 .neu-button input {
   opacity: 0;
   width: 0;
@@ -113,7 +117,7 @@
   transform: translateY(-1px);
 }
 
-.neu-button input:checked + .btn-content {
+.neu-button.pressed .btn-content {
   box-shadow:
     inset 4px 4px 8px rgba(0, 0, 0, 0.45),
     inset -4px -4px 8px rgba(255, 255, 255, 0.25);
@@ -122,11 +126,26 @@
   text-shadow: 0 0 8px rgba(78, 205, 196, 0.4);
 }
 
-.neu-button.no-accent input:checked + .btn-content {
+.neu-button.no-accent.pressed .btn-content {
   color: #e0e0e0;
   text-shadow: none;
 }
 
 .neu-button.no-accent:hover .btn-content {
   color: #eaeaea;
+}
+
+.neu-button.disabled .btn-content {
+  color: rgba(224, 224, 224, 0.5);
+  box-shadow: none;
+  transform: none;
+  text-shadow: none;
+}
+
+.neu-button.disabled:hover .btn-content,
+.neu-button.disabled.pressed .btn-content {
+  color: rgba(224, 224, 224, 0.5);
+  box-shadow: none;
+  transform: none;
+  text-shadow: none;
 }

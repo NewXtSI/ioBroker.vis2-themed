@@ -19,6 +19,7 @@
   "themed_button_icon_color_active": "Symbol color active",
   "themed_button_use_accent": "Use accent color",
   "themed_button_invert_value": "Invert value",
+  "themed_button_disabled": "Disabled",
   "themed_button_nav_mode": "Navigation mode",
   "themed_button_nav_section": "When enabled, the button navigates to the selected page instead of writing Object ID.",
   "themed_button_nav_view": "Target page",
@@ -30,5 +31,13 @@
   "themed_bar_max": "Max",
   "themed_bar_use_accent": "Use accent color",
   "themed_bar_color": "Fill color",
-  "themed_bar_vertical": "Vertical"
+  "themed_bar_vertical": "Vertical",
+  "themed_slider_oid": "Object ID",
+  "themed_slider_min": "Min",
+  "themed_slider_max": "Max",
+  "themed_slider_steps": "Steps",
+  "themed_slider_write_delay": "Write delay (ms)",
+  "themed_slider_use_accent": "Use accent color",
+  "themed_slider_vertical": "Vertical",
+  "themed_slider_color": "Fill color"
 }

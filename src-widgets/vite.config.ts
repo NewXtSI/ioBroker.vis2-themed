@@ -17,6 +17,7 @@ export default {
         './ThemedCheckbox': './src/ThemedCheckbox',
         './ThemedButton': './src/ThemedButton',
         './ThemedBar': './src/ThemedBar',
+        './ThemedSlider': './src/ThemedSlider',
         './translations': './src/translations'
       },
       remotes: {},

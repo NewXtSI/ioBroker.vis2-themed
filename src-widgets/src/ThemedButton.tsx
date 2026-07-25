@@ -13,6 +13,7 @@ interface ButtonRxData {
   iconColorActive: string;
   useAccent: boolean;
   invertValue: boolean;
+  disabled: boolean;
   pushButton: boolean;
   pushToggle: boolean;
   circle: boolean;
@@ -131,6 +132,12 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
               hidden: 'return data.navigateMode;'
             },
             {
+              name: 'disabled',
+              label: 'themed_button_disabled',
+              type: 'checkbox',
+              default: false
+            },
+            {
               name: 'pushButton',
               label: 'themed_button_push_mode',
               type: 'checkbox',
@@ -181,6 +188,10 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
   };
 
   private onToggle = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    if (this.state.rxData.disabled) {
+      return;
+    }
+
     if (this.state.rxData.pushButton) {
       return;
     }
@@ -244,6 +255,10 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
   };
 
   private onPressStart = (event: React.PointerEvent<HTMLLabelElement>): void => {
+    if (this.state.rxData.disabled) {
+      return;
+    }
+
     if (!this.state.rxData.pushButton || this.state.pushActive) {
       return;
     }
@@ -290,6 +305,7 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
     const logicalValue = this.toLogicalValue(value);
     const pushButton = this.state.rxData.pushButton === true;
     const navigateMode = this.state.rxData.navigateMode === true;
+    const disabled = this.state.rxData.disabled === true;
     const checked = navigateMode ? (pushButton ? this.state.pushActive : false) : pushButton ? this.state.pushActive : logicalValue;
     const useAccent = this.state.rxData.useAccent !== false;
     const circle = this.state.rxData.circle === true;
@@ -324,7 +340,7 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
     return (
       <div className="themed-button-root">
         <label
-          className={`neu-button ${useAccent ? 'with-accent' : 'no-accent'} ${circle ? 'circle' : 'rect'}`}
+          className={`neu-button ${useAccent ? 'with-accent' : 'no-accent'} ${circle ? 'circle' : 'rect'} ${checked ? 'pressed' : ''} ${disabled ? 'disabled' : ''}`}
           onPointerDown={this.onPressStart}
           onPointerUp={this.onPressEnd}
           onPointerCancel={this.onPressEnd}
