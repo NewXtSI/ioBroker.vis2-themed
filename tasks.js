@@ -10,6 +10,7 @@ function clean() {
 }
 
 function copyAllFiles() {
+  deleteFoldersRecursive(`widgets/${adapterName}`);
   copyFiles([`${SRC}build/customWidgets.js`], `widgets/${adapterName}`);
   copyFiles([`${SRC}build/assets/*.*`], `widgets/${adapterName}/assets`);
   copyFiles([`${SRC}build/img/*.*`], `widgets/${adapterName}/img`);
