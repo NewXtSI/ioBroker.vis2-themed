@@ -117,6 +117,15 @@
   transform: translateY(-1px);
 }
 
+.neu-button:active .btn-content {
+  box-shadow:
+    inset 4px 4px 8px rgba(0, 0, 0, 0.45),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.25);
+  transform: translateY(2px);
+  color: #4ecdc4;
+  text-shadow: 0 0 8px rgba(78, 205, 196, 0.4);
+}
+
 .neu-button.pressed .btn-content {
   box-shadow:
     inset 4px 4px 8px rgba(0, 0, 0, 0.45),
@@ -127,6 +136,11 @@
 }
 
 .neu-button.no-accent.pressed .btn-content {
+  color: #e0e0e0;
+  text-shadow: none;
+}
+
+.neu-button.no-accent:active .btn-content {
   color: #e0e0e0;
   text-shadow: none;
 }
@@ -143,6 +157,7 @@
 }
 
 .neu-button.disabled:hover .btn-content,
+.neu-button.disabled:active .btn-content,
 .neu-button.disabled.pressed .btn-content {
   color: rgba(224, 224, 224, 0.5);
   box-shadow: none;

@@ -20,5 +20,5 @@
 | Bar color kill die gesamte Optik, da ohne shadows, transparenz und ähnliches. Auch sollte der "Barindicator" etwas (minimal) mehr Abstand zur versenkten Bar haben | 1 | Bar | 633fa36 | 
 | Toggle soll in Verbindung mit Pushbutton auch immer wieder "herausspringen". Beim Drücken wird dann aber entweder true oder false geschrieben | 1 | Button | e92b757 |
 | Pushbutton soll auch gedrückt werden können, wenn der Wert bereits passend steht. Dann erfolgt nur das optische Drücken | 1 | Button | e92b757 |
-| Pushbutton funktioniert mit Drückeffekt noch nicht. Weder normal, noch toggle. Aktion wird ausgeführt (beim Toggle), aber ein "Drücken" ist nicht sichtbar| 1 | button | 1cabd9c |
+| Pushbutton funktioniert mit Drückeffekt noch nicht. Weder normal, noch toggle. Aktion wird ausgeführt (beim Toggle), aber ein "Drücken" ist nicht sichtbar| 1 | button | PENDING_HASH |
 

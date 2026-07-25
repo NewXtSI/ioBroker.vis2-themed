@@ -344,7 +344,6 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
           onPointerDown={this.onPressStart}
           onPointerUp={this.onPressEnd}
           onPointerCancel={this.onPressEnd}
-          onPointerLeave={this.onPressEnd}
           onBlur={this.onPressEnd}
         >
           <input type="checkbox" checked={checked} onChange={this.onToggle} readOnly={pushButton} />
