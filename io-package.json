@@ -34,7 +34,8 @@
         "components": [
           "ThemedCheckbox",
           "ThemedButton",
-          "ThemedBar"
+          "ThemedBar",
+          "ThemedSlider"
         ]
       }
     },
