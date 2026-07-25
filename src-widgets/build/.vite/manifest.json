@@ -44,7 +44,7 @@
     ]
   },
   "src/ThemedButton.tsx": {
-    "file": "assets/ThemedButton-CZ85zPmA.js",
+    "file": "assets/ThemedButton-DLS_w6Wp.js",
     "name": "ThemedButton",
     "src": "src/ThemedButton.tsx",
     "isEntry": true,
@@ -72,7 +72,7 @@
     ]
   },
   "src/translations.ts": {
-    "file": "assets/translations-58418c7s.js",
+    "file": "assets/translations-BMRGIg6A.js",
     "name": "translations",
     "src": "src/translations.ts",
     "isEntry": true,
@@ -93,7 +93,7 @@
     ]
   },
   "virtual:mf-exposes:__mfe_internal__vis2ThemedWidgets__customWidgets_js": {
-    "file": "assets/virtualExposes-DslvbvUI.js",
+    "file": "assets/virtualExposes-t95fMqLw.js",
     "name": "virtualExposes",
     "src": "virtual:mf-exposes:__mfe_internal__vis2ThemedWidgets__customWidgets_js",
     "isDynamicEntry": true,
