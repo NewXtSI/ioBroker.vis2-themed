@@ -1,0 +1,51 @@
+.themed-bar-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding: 12px 12px 12px 14px;
+  overflow: hidden;
+}
+
+.neu-bar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 60px;
+  min-height: 20px;
+  background-color: #737373;
+  border-radius: 999px;
+  box-shadow:
+    inset 4px 4px 8px rgba(0, 0, 0, 0.4),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+.neu-bar-fill {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  bottom: 4px;
+  min-width: 0;
+  border-radius: 999px;
+  background: linear-gradient(145deg, #7b7b7b, #6b6b6b);
+  box-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.35),
+    -2px -2px 4px rgba(255, 255, 255, 0.2);
+  transition: width 0.25s ease-in-out;
+}
+
+.neu-bar.with-accent .neu-bar-fill {
+  box-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.35),
+    -2px -2px 4px rgba(255, 255, 255, 0.2),
+    0 0 10px rgba(78, 205, 196, 0.35);
+}
+
+.neu-bar.no-accent .neu-bar-fill {
+  box-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.35),
+    -2px -2px 4px rgba(255, 255, 255, 0.2);
+}

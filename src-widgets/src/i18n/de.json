@@ -8,5 +8,12 @@
   "themed_button_oid": "Object ID",
   "themed_button_default_text": "System aktiv",
   "themed_button_use_accent": "Akzentfarbe verwenden",
-  "themed_button_push_mode": "Pushbutton-Modus"
+  "themed_button_push_mode": "Pushbutton-Modus",
+  "themed_button_push_toggle": "Target bei Druck toggeln",
+  "themed_button_circle": "Kreis-Modus",
+  "themed_bar_oid": "Object ID",
+  "themed_bar_min": "Minimum",
+  "themed_bar_max": "Maximum",
+  "themed_bar_use_accent": "Akzentfarbe verwenden",
+  "themed_bar_color": "Fuellfarbe"
 }

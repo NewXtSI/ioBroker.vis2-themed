@@ -33,7 +33,8 @@
         "bundlerType": "module",
         "components": [
           "ThemedCheckbox",
-          "ThemedButton"
+          "ThemedButton",
+          "ThemedBar"
         ]
       }
     },

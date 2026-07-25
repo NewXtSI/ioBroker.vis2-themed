@@ -8,6 +8,8 @@ interface ButtonRxData {
   text: string;
   useAccent: boolean;
   pushButton: boolean;
+  pushToggle: boolean;
+  circle: boolean;
 }
 
 interface ButtonState extends VisRxWidgetState {
@@ -57,6 +59,18 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
               label: 'themed_button_push_mode',
               type: 'checkbox',
               default: false
+            },
+            {
+              name: 'pushToggle',
+              label: 'themed_button_push_toggle',
+              type: 'checkbox',
+              default: false
+            },
+            {
+              name: 'circle',
+              label: 'themed_button_circle',
+              type: 'checkbox',
+              default: false
             }
           ]
         }
@@ -88,11 +102,20 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
     this.writeValue(event.target.checked);
   };
 
-  private onPressStart = (): void => {
-    if (!this.state.rxData.pushButton) {
+  private onPressStart = (event: React.PointerEvent<HTMLLabelElement>): void => {
+    if (!this.state.rxData.pushButton || this.state.pushActive) {
       return;
     }
+
+    event.currentTarget.setPointerCapture(event.pointerId);
     this.setState({ pushActive: true });
+
+    if (this.state.rxData.pushToggle) {
+      const current = Boolean(this.state.values[`${this.state.rxData.oid}.val`]);
+      this.writeValue(!current);
+      return;
+    }
+
     this.writeValue(true);
   };
 
@@ -100,7 +123,17 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
     if (!this.state.rxData.pushButton) {
       return;
     }
+
+    if (!this.state.pushActive) {
+      return;
+    }
+
     this.setState({ pushActive: false });
+
+    if (this.state.rxData.pushToggle) {
+      return;
+    }
+
     this.writeValue(false);
   };
 
@@ -110,20 +143,23 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
     const stateId = this.state.rxData.oid;
     const value = stateId ? this.state.values[`${stateId}.val`] : false;
     const pushButton = this.state.rxData.pushButton === true;
-    const checked = pushButton ? this.state.pushActive : Boolean(value);
+    const pushToggle = this.state.rxData.pushToggle === true;
+    const checked = pushButton ? (pushToggle ? Boolean(value) : this.state.pushActive) : Boolean(value);
     const useAccent = this.state.rxData.useAccent !== false;
+    const circle = this.state.rxData.circle === true;
     const text = this.state.rxData.text || ThemedButton.t('themed_button_default_text');
 
     return (
       <div className="themed-button-root">
         <label
-          className={`neu-button ${useAccent ? 'with-accent' : 'no-accent'}`}
+          className={`neu-button ${useAccent ? 'with-accent' : 'no-accent'} ${circle ? 'circle' : 'rect'}`}
           onPointerDown={this.onPressStart}
           onPointerUp={this.onPressEnd}
           onPointerCancel={this.onPressEnd}
           onPointerLeave={this.onPressEnd}
+          onBlur={this.onPressEnd}
         >
-          <input type="checkbox" checked={checked} onChange={this.onToggle} />
+          <input type="checkbox" checked={checked} onChange={this.onToggle} readOnly={pushButton} />
           <span className="btn-content">{text}</span>
         </label>
       </div>

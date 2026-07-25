@@ -16,6 +16,7 @@ export default {
       exposes: {
         './ThemedCheckbox': './src/ThemedCheckbox',
         './ThemedButton': './src/ThemedButton',
+        './ThemedBar': './src/ThemedBar',
         './translations': './src/translations'
       },
       remotes: {},

@@ -8,5 +8,12 @@
   "themed_button_oid": "Object ID",
   "themed_button_default_text": "System aktiv",
   "themed_button_use_accent": "Use accent color",
-  "themed_button_push_mode": "Pushbutton mode"
+  "themed_button_push_mode": "Pushbutton mode",
+  "themed_button_push_toggle": "Toggle target on press",
+  "themed_button_circle": "Circle mode",
+  "themed_bar_oid": "Object ID",
+  "themed_bar_min": "Min",
+  "themed_bar_max": "Max",
+  "themed_bar_use_accent": "Use accent color",
+  "themed_bar_color": "Fill color"
 }
