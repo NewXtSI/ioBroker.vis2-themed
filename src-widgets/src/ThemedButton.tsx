@@ -6,7 +6,13 @@ import './ThemedButton.css';
 interface ButtonRxData {
   oid: string;
   text: string;
+  contentMode: string;
+  icon: string;
+  image: string;
+  iconColorInactive: string;
+  iconColorActive: string;
   useAccent: boolean;
+  invertValue: boolean;
   pushButton: boolean;
   pushToggle: boolean;
   circle: boolean;
@@ -52,6 +58,47 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
               default: 'System aktiv'
             },
             {
+              name: 'contentMode',
+              label: 'themed_button_content_mode',
+              type: 'select',
+              default: 'text',
+              options: [
+                { value: 'text', label: 'themed_button_content_text' },
+                { value: 'text-icon', label: 'themed_button_content_text_icon' },
+                { value: 'icon', label: 'themed_button_content_icon' },
+                { value: 'text-image', label: 'themed_button_content_text_image' },
+                { value: 'image', label: 'themed_button_content_image' }
+              ]
+            },
+            {
+              name: 'icon',
+              label: 'themed_button_icon',
+              type: 'icon',
+              default: '',
+              hidden: 'return data.contentMode !== "icon" && data.contentMode !== "text-icon";'
+            },
+            {
+              name: 'image',
+              label: 'themed_button_image',
+              type: 'image',
+              default: '',
+              hidden: 'return data.contentMode !== "image" && data.contentMode !== "text-image";'
+            },
+            {
+              name: 'iconColorInactive',
+              label: 'themed_button_icon_color_inactive',
+              type: 'color',
+              default: '',
+              hidden: 'return data.contentMode !== "icon" && data.contentMode !== "text-icon";'
+            },
+            {
+              name: 'iconColorActive',
+              label: 'themed_button_icon_color_active',
+              type: 'color',
+              default: '',
+              hidden: 'return data.contentMode !== "icon" && data.contentMode !== "text-icon";'
+            },
+            {
               name: 'navigateMode',
               label: 'themed_button_nav_mode',
               type: 'checkbox',
@@ -75,6 +122,13 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
               label: 'themed_button_use_accent',
               type: 'checkbox',
               default: true
+            },
+            {
+              name: 'invertValue',
+              label: 'themed_button_invert_value',
+              type: 'checkbox',
+              default: false,
+              hidden: 'return data.navigateMode;'
             },
             {
               name: 'pushButton',
@@ -118,6 +172,14 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
     this.props.context.setValue(targetId, value);
   };
 
+  private toLogicalValue = (rawValue: boolean): boolean => {
+    return this.state.rxData.invertValue ? !rawValue : rawValue;
+  };
+
+  private writeLogicalValue = (logicalValue: boolean): void => {
+    this.writeValue(this.state.rxData.invertValue ? !logicalValue : logicalValue);
+  };
+
   private onToggle = (event: React.ChangeEvent<HTMLInputElement>): void => {
     if (this.state.rxData.pushButton) {
       return;
@@ -128,7 +190,7 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
       return;
     }
 
-    this.writeValue(event.target.checked);
+    this.writeLogicalValue(event.target.checked);
   };
 
   private navigateToView = (): void => {
@@ -195,12 +257,13 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
     }
 
     if (this.state.rxData.pushToggle) {
-      const current = Boolean(this.state.values[`${this.state.rxData.oid}.val`]);
-      this.writeValue(!current);
+      const currentRaw = Boolean(this.state.values[`${this.state.rxData.oid}.val`]);
+      const currentLogical = this.toLogicalValue(currentRaw);
+      this.writeLogicalValue(!currentLogical);
       return;
     }
 
-    this.writeValue(true);
+    this.writeLogicalValue(true);
   };
 
   private onPressEnd = (): void => {
@@ -223,22 +286,40 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
     super.renderWidgetBody(props);
 
     const stateId = this.state.rxData.oid;
-    const value = stateId ? this.state.values[`${stateId}.val`] : false;
+    const value = stateId ? Boolean(this.state.values[`${stateId}.val`]) : false;
+    const logicalValue = this.toLogicalValue(value);
     const pushButton = this.state.rxData.pushButton === true;
-    const pushToggle = this.state.rxData.pushToggle === true;
     const navigateMode = this.state.rxData.navigateMode === true;
-    const checked = navigateMode
-      ? pushButton
-        ? this.state.pushActive
-        : false
-      : pushButton
-        ? pushToggle
-          ? Boolean(value)
-          : this.state.pushActive
-        : Boolean(value);
+    const checked = navigateMode ? (pushButton ? this.state.pushActive : false) : pushButton ? this.state.pushActive : logicalValue;
     const useAccent = this.state.rxData.useAccent !== false;
     const circle = this.state.rxData.circle === true;
+    const contentMode = this.state.rxData.contentMode || 'text';
+    const icon = (this.state.rxData.icon || '').trim();
+    const image = (this.state.rxData.image || '').trim();
     const text = this.state.rxData.text || ThemedButton.t('themed_button_default_text');
+    const iconColorInactive = (this.state.rxData.iconColorInactive || '').trim() || '#e0e0e0';
+    const iconColorActive = (this.state.rxData.iconColorActive || '').trim() || (useAccent ? '#4ecdc4' : '#e0e0e0');
+    const symbolColor = checked ? iconColorActive : iconColorInactive;
+
+    const hasText = contentMode === 'text' || contentMode === 'text-icon' || contentMode === 'text-image';
+    const hasIcon = (contentMode === 'icon' || contentMode === 'text-icon') && !!icon;
+    const hasImage = (contentMode === 'image' || contentMode === 'text-image') && !!image;
+
+    const iconIsUrlLike = /^(https?:|data:image\/|\/)/.test(icon);
+    const iconIsClassName = /\s/.test(icon) || icon.includes('fa-') || icon.includes('material');
+    const iconNode = hasIcon ? (
+      iconIsUrlLike ? (
+        <img className="btn-icon-img" src={icon} alt="" />
+      ) : iconIsClassName ? (
+        <i className={`btn-icon-symbol ${icon}`} style={{ color: symbolColor }} aria-hidden="true" />
+      ) : (
+        <span className="btn-icon-symbol" style={{ color: symbolColor }} aria-hidden="true">
+          {icon}
+        </span>
+      )
+    ) : null;
+
+    const imageNode = hasImage ? <img className="btn-image" src={image} alt="" /> : null;
 
     return (
       <div className="themed-button-root">
@@ -251,7 +332,11 @@ export default class ThemedButton extends (window.visRxWidget as typeof VisRxWid
           onBlur={this.onPressEnd}
         >
           <input type="checkbox" checked={checked} onChange={this.onToggle} readOnly={pushButton} />
-          <span className="btn-content">{text}</span>
+          <span className={`btn-content ${hasText && (hasIcon || hasImage) ? 'with-media' : ''}`}>
+            {hasIcon ? iconNode : null}
+            {hasImage ? imageNode : null}
+            {hasText ? <span className="btn-text">{text}</span> : null}
+          </span>
         </label>
       </div>
     );
