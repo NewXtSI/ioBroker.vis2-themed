@@ -5,7 +5,7 @@
 | [NEWFEAT] Pushbutton soll ein Setting "circle" bekommen, dadurch den Button nicht rechteckig, sondern kreisförmig zeichnen. keine Ellipse! | 1 | 6313b0e |
 | [NEWWIDGET] themed_bar: einfache "Progressbar" im Neumorphism style. Basis versenkt und indicator über ähnlich der Checkbox, nur langggestreckt. Object ID, Min, Max Wert als Settings, Akzent setzbar, zusätzlich eine "color", die dann die Füllung des Indicators bestimmt, falls gesetzt. | 2 | 6313b0e |
 | [NEWFEAT] themed_bar Checkbox für vertikal | 1 | 633fa36 | 
-| [NEWFEAT] button Navigationsmodus: Button soll in den Settings eine Section haben (an/abschaltbar), die statt der Object ID dann eine Auswahl der Pages anbietet und eine Navigation dahin ausführt statt die Object ID zu beschreiben | 2 | PENDING_HASH | 
+| [NEWFEAT] button Navigationsmodus: Button soll in den Settings eine Section haben (an/abschaltbar), die statt der Object ID dann eine Auswahl der Pages anbietet und eine Navigation dahin ausführt statt die Object ID zu beschreiben | 2 | 2bc845d | 
 | [NEWFEAT] button image/Symbol Auswahl soll auch möglich sein und zusätzlich zum text (oder statt des text) dargestellt werden. Bei Symbol. Bei Symbol soll es auch noch zwei Auswahlmöglichkeiten für Farbe (aktiv/inaktiv) geben, default Textfarbe und Akzentfarbe | 2 | | 
 
 ## Bugs
