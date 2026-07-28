@@ -259,6 +259,7 @@ export default class ThemedDropdown extends (window.visRxWidget as typeof VisRxW
     const displayOptions = !hasMatchingValue && currentValueText
       ? [{ label: currentValueText, value: currentValueText }, ...options]
       : options;
+    const selectedValue = currentValueText && displayOptions.some(option => option.value === currentValueText) ? currentValueText : '';
     const placeholder = (this.state.rxData.placeholder || '').trim() || ThemedDropdown.t('themed_dropdown_default_placeholder');
     const disabled = this.state.rxData.disabled === true || displayOptions.length === 0;
     const useAccent = this.state.rxData.useAccent !== false;
@@ -269,7 +270,7 @@ export default class ThemedDropdown extends (window.visRxWidget as typeof VisRxW
           <div className="dropdown-shell">
             <select
               className="dropdown-select"
-              value={hasMatchingValue ? currentValueText : ''}
+              value={selectedValue}
               onChange={this.onValueChange}
               onFocus={() => this.setState({ isFocused: true })}
               onBlur={() => this.setState({ isFocused: false })}
