@@ -10,7 +10,6 @@ interface DropdownOption {
 
 interface DropdownRxData {
   oid: string;
-  text: string;
   placeholder: string;
   optionsText: string;
   useAccent: boolean;
@@ -19,6 +18,7 @@ interface DropdownRxData {
 
 interface DropdownState extends VisRxWidgetState {
   isFocused: boolean;
+  objectOptions: DropdownOption[];
 }
 
 export default class ThemedDropdown extends (window.visRxWidget as typeof VisRxWidget)<DropdownRxData, DropdownState> {
@@ -28,7 +28,8 @@ export default class ThemedDropdown extends (window.visRxWidget as typeof VisRxW
     super(props);
     this.state = {
       ...this.state,
-      isFocused: false
+      isFocused: false,
+      objectOptions: []
     };
   }
 
@@ -46,12 +47,6 @@ export default class ThemedDropdown extends (window.visRxWidget as typeof VisRxW
               name: 'oid',
               label: 'themed_dropdown_oid',
               type: 'id'
-            },
-            {
-              name: 'text',
-              label: 'themed_dropdown_label',
-              type: 'text',
-              default: 'Ausrichtung'
             },
             {
               name: 'placeholder',
@@ -95,6 +90,52 @@ export default class ThemedDropdown extends (window.visRxWidget as typeof VisRxW
 
   static getI18nPrefix(): string {
     return `${ThemedDropdown.adapter}_`;
+  }
+
+  componentDidMount(): void {
+    super.componentDidMount();
+    void this.updateObjectOptions();
+  }
+
+  onRxDataChanged(prevRxData: DropdownRxData): void {
+    if (prevRxData.oid !== this.state.rxData.oid) {
+      void this.updateObjectOptions();
+    }
+  }
+
+  private async updateObjectOptions(): Promise<void> {
+    const stateId = (this.state.rxData.oid || '').trim();
+    if (!stateId) {
+      this.setState({ objectOptions: [] });
+      return;
+    }
+
+    try {
+      const objects = await this.props.context.getObjects(true);
+      const targetObject = objects?.[stateId];
+      const states = targetObject?.common?.states;
+
+      if (!states || typeof states !== 'object') {
+        this.setState({ objectOptions: [] });
+        return;
+      }
+
+      const objectOptions = Array.isArray(states)
+        ? states
+            .map(entry => `${entry}`.trim())
+            .filter(Boolean)
+            .map(entry => ({ label: entry, value: entry }))
+        : Object.entries(states)
+            .map(([value, label]) => ({
+              value: `${value}`,
+              label: `${label ?? value}`.trim() || `${value}`
+            }))
+            .filter(option => option.value);
+
+      this.setState({ objectOptions });
+    } catch {
+      this.setState({ objectOptions: [] });
+    }
   }
 
   private parseOptions(): DropdownOption[] {
@@ -165,20 +206,18 @@ export default class ThemedDropdown extends (window.visRxWidget as typeof VisRxW
   renderWidgetBody(props: RxRenderWidgetProps): React.JSX.Element {
     super.renderWidgetBody(props);
 
-    const options = this.parseOptions();
+    const options = this.state.objectOptions.length ? this.state.objectOptions : this.parseOptions();
     const stateId = this.state.rxData.oid;
     const currentValue = stateId ? this.state.values[`${stateId}.val`] : undefined;
     const currentValueText = currentValue === undefined || currentValue === null ? '' : String(currentValue);
     const hasMatchingValue = options.some(option => option.value === currentValueText);
     const placeholder = (this.state.rxData.placeholder || '').trim() || ThemedDropdown.t('themed_dropdown_default_placeholder');
-    const label = (this.state.rxData.text || '').trim();
     const disabled = this.state.rxData.disabled === true || options.length === 0;
     const useAccent = this.state.rxData.useAccent !== false;
 
     return (
       <div className="themed-dropdown-root">
         <div className={`neu-dropdown ${useAccent ? 'with-accent' : 'no-accent'} ${disabled ? 'disabled' : ''} ${this.state.isFocused ? 'focused' : ''}`}>
-          {label ? <div className="dropdown-label">{label}</div> : null}
           <div className="dropdown-shell">
             <select
               className="dropdown-select"

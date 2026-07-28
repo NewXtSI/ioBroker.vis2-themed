@@ -41,11 +41,10 @@
   "themed_slider_vertical": "Vertikal",
   "themed_slider_color": "Fuellfarbe",
   "themed_dropdown_oid": "Object ID",
-  "themed_dropdown_label": "Beschriftung",
   "themed_dropdown_placeholder": "Platzhalter",
   "themed_dropdown_default_placeholder": "Bitte waehlen",
-  "themed_dropdown_options": "Optionen",
-  "themed_dropdown_options_hint": "Eine Option pro Zeile im Format Label|wert. Beispiel: Links|left",
+  "themed_dropdown_options": "Fallback-Optionen",
+  "themed_dropdown_options_hint": "Wenn das Zielobjekt common.states definiert, werden diese Eintraege automatisch verwendet. Sonst eine Option pro Zeile im Format Label|wert eintragen.",
   "themed_dropdown_use_accent": "Akzentfarbe verwenden",
   "themed_dropdown_disabled": "Deaktiviert",
   "themed_dropdown_no_options": "Keine Optionen konfiguriert"

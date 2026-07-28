@@ -24,7 +24,7 @@
     "name": "preload-helper"
   },
   "index.html": {
-    "file": "assets/index-BCctqQXi.js",
+    "file": "assets/index-J-h0rxJr.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -78,7 +78,7 @@
     ]
   },
   "src/ThemedDropdown.tsx": {
-    "file": "assets/ThemedDropdown-42nmc6p6.js",
+    "file": "assets/ThemedDropdown-DZQE1FcP.js",
     "name": "ThemedDropdown",
     "src": "src/ThemedDropdown.tsx",
     "isEntry": true,
@@ -88,7 +88,7 @@
       "___virtual_mf___mfe_internal__vis2ThemedWidgets__mf_owner__1__loadShare__react__loadShare__.js_commonjs-proxy-BN8L-M7j.js"
     ],
     "css": [
-      "assets/ThemedDropdown-DKo8SNAW.css"
+      "assets/ThemedDropdown-Bn_UVUVI.css"
     ]
   },
   "src/ThemedSlider.tsx": {
@@ -106,7 +106,7 @@
     ]
   },
   "src/translations.ts": {
-    "file": "assets/translations-6bLigGPd.js",
+    "file": "assets/translations-BEdO7rRR.js",
     "name": "translations",
     "src": "src/translations.ts",
     "isEntry": true,
@@ -127,7 +127,7 @@
     ]
   },
   "virtual:mf-exposes:__mfe_internal__vis2ThemedWidgets__customWidgets_js": {
-    "file": "assets/virtualExposes-CLP1dbjc.js",
+    "file": "assets/virtualExposes-U1f-3Txi.js",
     "name": "virtualExposes",
     "src": "virtual:mf-exposes:__mfe_internal__vis2ThemedWidgets__customWidgets_js",
     "isDynamicEntry": true,

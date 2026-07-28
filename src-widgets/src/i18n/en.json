@@ -41,11 +41,10 @@
   "themed_slider_vertical": "Vertical",
   "themed_slider_color": "Fill color",
   "themed_dropdown_oid": "Object ID",
-  "themed_dropdown_label": "Label",
   "themed_dropdown_placeholder": "Placeholder",
   "themed_dropdown_default_placeholder": "Please select",
-  "themed_dropdown_options": "Options",
-  "themed_dropdown_options_hint": "One option per line in the format Label|value. Example: Left|left",
+  "themed_dropdown_options": "Fallback options",
+  "themed_dropdown_options_hint": "If the target object defines common.states, those entries are used automatically. Otherwise use one option per line in the format Label|value.",
   "themed_dropdown_use_accent": "Use accent color",
   "themed_dropdown_disabled": "Disabled",
   "themed_dropdown_no_options": "No options configured"
