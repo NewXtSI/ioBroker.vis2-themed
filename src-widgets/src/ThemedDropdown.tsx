@@ -211,8 +211,11 @@ export default class ThemedDropdown extends (window.visRxWidget as typeof VisRxW
     const currentValue = stateId ? this.state.values[`${stateId}.val`] : undefined;
     const currentValueText = currentValue === undefined || currentValue === null ? '' : String(currentValue);
     const hasMatchingValue = options.some(option => option.value === currentValueText);
+    const displayOptions = !hasMatchingValue && currentValueText
+      ? [{ label: currentValueText, value: currentValueText }, ...options]
+      : options;
     const placeholder = (this.state.rxData.placeholder || '').trim() || ThemedDropdown.t('themed_dropdown_default_placeholder');
-    const disabled = this.state.rxData.disabled === true || options.length === 0;
+    const disabled = this.state.rxData.disabled === true || displayOptions.length === 0;
     const useAccent = this.state.rxData.useAccent !== false;
 
     return (
@@ -228,9 +231,9 @@ export default class ThemedDropdown extends (window.visRxWidget as typeof VisRxW
               disabled={disabled}
             >
               <option value="" disabled>
-                {options.length ? placeholder : ThemedDropdown.t('themed_dropdown_no_options')}
+                {displayOptions.length ? placeholder : ThemedDropdown.t('themed_dropdown_no_options')}
               </option>
-              {options.map(option => (
+              {displayOptions.map(option => (
                 <option key={`${option.label}:${option.value}`} value={option.value}>
                   {option.label}
                 </option>

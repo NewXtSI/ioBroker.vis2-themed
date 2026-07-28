@@ -24,16 +24,10 @@
     "name": "preload-helper"
   },
   "index.html": {
-    "file": "assets/index-J-h0rxJr.js",
+    "file": "assets/index-B5Qt9EMX.js",
     "name": "index",
     "src": "index.html",
-    "isEntry": true,
-    "imports": [
-      "virtual:mf-exposes:__mfe_internal__vis2ThemedWidgets__customWidgets_js",
-      "virtual:mf-REMOTE_ENTRY_ID:__mfe_internal__vis2ThemedWidgets__customWidgets_js",
-      "_preload-helper-C1FmrZbK.js",
-      "_index-DgyDMLru.js"
-    ]
+    "isEntry": true
   },
   "src/ThemedBar.tsx": {
     "file": "assets/ThemedBar-Bs7eYD9B.js",
@@ -78,7 +72,7 @@
     ]
   },
   "src/ThemedDropdown.tsx": {
-    "file": "assets/ThemedDropdown-DZQE1FcP.js",
+    "file": "assets/ThemedDropdown-CH5e4SoT.js",
     "name": "ThemedDropdown",
     "src": "src/ThemedDropdown.tsx",
     "isEntry": true,
@@ -127,7 +121,7 @@
     ]
   },
   "virtual:mf-exposes:__mfe_internal__vis2ThemedWidgets__customWidgets_js": {
-    "file": "assets/virtualExposes-U1f-3Txi.js",
+    "file": "assets/virtualExposes-BLCDy5Wr.js",
     "name": "virtualExposes",
     "src": "virtual:mf-exposes:__mfe_internal__vis2ThemedWidgets__customWidgets_js",
     "isDynamicEntry": true,
