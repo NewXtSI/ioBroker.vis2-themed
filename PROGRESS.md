@@ -10,7 +10,10 @@
 | [NEWFEAT] button Checkbox für Wert invertiert | 1 | e92b757 | 
 | [NEWWIDGET] Slider. Wie die Bar, aber mit einem Anfasser. Weitere Eigenschaft "steps", auf die dann "gerundet" werden soll. Weiteres Setting "write delay" für Angabe in ms (default 500), wann, nach stabilem Halten oder loslassen eienr Position der Wert auch geschrieben werden soll | 2 | 1cabd9c | 
 | [NEWFEAT] button Checkbox "disabled". Nicht mehr mit shadows up/down, sondern flach und text mit 50% alpha. Drücken nicht mehr möglich | 1 | 1cabd9c | 
-| [NEWWIDGET] Dropdown Button (wie "https://themesberg.com/docs/neumorphism-ui/components/buttons/"). Auswahlliste der Werte und Einträge, damit zum Beispiel bei Auswahl "Links" der wert "left" in die Object ID geschrieben werden kann | 1 |  |
+| [NEWWIDGET] Dropdown Button (wie "https://themesberg.com/docs/neumorphism-ui/components/buttons/"). Auswahlliste der Werte und Einträge, damit zum Beispiel bei Auswahl "Links" der wert "left" in die Object ID geschrieben werden kann | 1 | 8dbd454 |
+| [NEWFEAT] button sollte auch ein Symbol ermöglichen (Material Icon Selector) | 1 |  | 
+| [NEWWIDGET]  | State icon. Widget mit Text, Icon, Symbol (und/oder alles) für true/false, was nur den Status eines Datenpunktes zeigt. kein Rahmen, keine Drückfunktion | 1 | |
+
 
 ## Bugs
 | Beschreibung | Prio | Widget (oder allg) | Fixed in |
