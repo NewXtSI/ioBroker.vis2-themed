@@ -18,6 +18,7 @@ export default {
         './ThemedButton': './src/ThemedButton',
         './ThemedBar': './src/ThemedBar',
         './ThemedSlider': './src/ThemedSlider',
+        './ThemedDropdown': './src/ThemedDropdown',
         './translations': './src/translations'
       },
       remotes: {},

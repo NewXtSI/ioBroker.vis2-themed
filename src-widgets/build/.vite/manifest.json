@@ -24,7 +24,7 @@
     "name": "preload-helper"
   },
   "index.html": {
-    "file": "assets/index-DHP6xaZi.js",
+    "file": "assets/index-BCctqQXi.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -77,6 +77,20 @@
       "assets/ThemedCheckbox-CJGRy7G9.css"
     ]
   },
+  "src/ThemedDropdown.tsx": {
+    "file": "assets/ThemedDropdown-42nmc6p6.js",
+    "name": "ThemedDropdown",
+    "src": "src/ThemedDropdown.tsx",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "__virtual_mf___mfe_internal__vis2ThemedWidgets__mf_owner__1__loadShare__react_mf_1_jsx_mf_2_runtime__loadShare__.js-CiUX0WNm.js",
+      "___virtual_mf___mfe_internal__vis2ThemedWidgets__mf_owner__1__loadShare__react__loadShare__.js_commonjs-proxy-BN8L-M7j.js"
+    ],
+    "css": [
+      "assets/ThemedDropdown-DKo8SNAW.css"
+    ]
+  },
   "src/ThemedSlider.tsx": {
     "file": "assets/ThemedSlider-93_sI77R.js",
     "name": "ThemedSlider",
@@ -92,7 +106,7 @@
     ]
   },
   "src/translations.ts": {
-    "file": "assets/translations-DztTUjQX.js",
+    "file": "assets/translations-6bLigGPd.js",
     "name": "translations",
     "src": "src/translations.ts",
     "isEntry": true,
@@ -113,7 +127,7 @@
     ]
   },
   "virtual:mf-exposes:__mfe_internal__vis2ThemedWidgets__customWidgets_js": {
-    "file": "assets/virtualExposes-BkFwQH-C.js",
+    "file": "assets/virtualExposes-CLP1dbjc.js",
     "name": "virtualExposes",
     "src": "virtual:mf-exposes:__mfe_internal__vis2ThemedWidgets__customWidgets_js",
     "isDynamicEntry": true,
@@ -125,6 +139,7 @@
       "src/ThemedButton.tsx",
       "src/ThemedBar.tsx",
       "src/ThemedSlider.tsx",
+      "src/ThemedDropdown.tsx",
       "src/translations.ts"
     ]
   },
