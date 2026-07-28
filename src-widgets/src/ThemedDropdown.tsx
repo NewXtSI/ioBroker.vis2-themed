@@ -21,6 +21,12 @@ interface DropdownState extends VisRxWidgetState {
   objectOptions: DropdownOption[];
 }
 
+interface ObjectWithStates {
+  common?: {
+    states?: Record<string, string> | string[];
+  };
+}
+
 export default class ThemedDropdown extends (window.visRxWidget as typeof VisRxWidget)<DropdownRxData, DropdownState> {
   static adapter: string;
 
@@ -111,8 +117,7 @@ export default class ThemedDropdown extends (window.visRxWidget as typeof VisRxW
     }
 
     try {
-      const objects = await this.props.context.getObjects(true);
-      const targetObject = objects?.[stateId];
+      const targetObject = await this.resolveTargetObject(stateId);
       const states = targetObject?.common?.states;
 
       if (!states || typeof states !== 'object') {
@@ -133,9 +138,49 @@ export default class ThemedDropdown extends (window.visRxWidget as typeof VisRxW
             .filter(option => option.value);
 
       this.setState({ objectOptions });
-    } catch {
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      if (typeof this.props.context.logError === 'function') {
+        this.props.context.logError(`ThemedDropdown: cannot resolve common.states for "${stateId}": ${message}`);
+      }
       this.setState({ objectOptions: [] });
     }
+  }
+
+  private async resolveTargetObject(stateId: string): Promise<ObjectWithStates | undefined> {
+    const ctx = this.props.context as unknown as {
+      getObjects?: (useCache?: boolean) => Promise<Record<string, ioBroker.Object>>;
+      _socket?: {
+        emit?: (cmd: string, data: any, cb: (result: any) => void) => void;
+      };
+    };
+
+    const visGlobal = (window as unknown as {
+      vis?: {
+        objects?: Record<string, ioBroker.Object>;
+      };
+    }).vis;
+
+    const objectFromVis = visGlobal?.objects?.[stateId];
+    if (objectFromVis) {
+      return objectFromVis;
+    }
+
+    if (typeof ctx.getObjects === 'function') {
+      const uncachedObjects = await ctx.getObjects(false);
+      const fromUncached = uncachedObjects?.[stateId];
+      if (fromUncached) {
+        return fromUncached;
+      }
+
+      const cachedObjects = await ctx.getObjects(true);
+      const fromCached = cachedObjects?.[stateId];
+      if (fromCached) {
+        return fromCached;
+      }
+    }
+
+    return undefined;
   }
 
   private parseOptions(): DropdownOption[] {
