@@ -29,6 +29,8 @@ interface ObjectWithStates {
 
 export default class ThemedDropdown extends (window.visRxWidget as typeof VisRxWidget)<DropdownRxData, DropdownState> {
   static adapter: string;
+  private optionsLoadRetry = 0;
+  private optionsLoadTimer: ReturnType<typeof setTimeout> | null = null;
 
   constructor(props: VisRxWidgetProps) {
     super(props);
@@ -64,7 +66,7 @@ export default class ThemedDropdown extends (window.visRxWidget as typeof VisRxW
               name: 'optionsText',
               label: 'themed_dropdown_options',
               type: 'text',
-              default: 'Links|left\nZentriert|center\nRechts|right'
+              default: ''
             },
             {
               name: 'optionsHint',
@@ -100,13 +102,40 @@ export default class ThemedDropdown extends (window.visRxWidget as typeof VisRxW
 
   componentDidMount(): void {
     super.componentDidMount();
+    this.optionsLoadRetry = 0;
     void this.updateObjectOptions();
   }
 
   onRxDataChanged(prevRxData: DropdownRxData): void {
     if (prevRxData.oid !== this.state.rxData.oid) {
+      this.optionsLoadRetry = 0;
+      if (this.optionsLoadTimer) {
+        clearTimeout(this.optionsLoadTimer);
+        this.optionsLoadTimer = null;
+      }
       void this.updateObjectOptions();
     }
+  }
+
+  componentWillUnmount(): void {
+    if (this.optionsLoadTimer) {
+      clearTimeout(this.optionsLoadTimer);
+      this.optionsLoadTimer = null;
+    }
+    super.componentWillUnmount();
+  }
+
+  private scheduleOptionsReload(stateId: string): void {
+    if (this.optionsLoadRetry >= 8 || this.optionsLoadTimer) {
+      return;
+    }
+    this.optionsLoadRetry += 1;
+    this.optionsLoadTimer = setTimeout(() => {
+      this.optionsLoadTimer = null;
+      if ((this.state.rxData.oid || '').trim() === stateId) {
+        void this.updateObjectOptions();
+      }
+    }, 800);
   }
 
   private async updateObjectOptions(): Promise<void> {
@@ -122,6 +151,7 @@ export default class ThemedDropdown extends (window.visRxWidget as typeof VisRxW
 
       if (!states || typeof states !== 'object') {
         this.setState({ objectOptions: [] });
+        this.scheduleOptionsReload(stateId);
         return;
       }
 
@@ -137,6 +167,7 @@ export default class ThemedDropdown extends (window.visRxWidget as typeof VisRxW
             }))
             .filter(option => option.value);
 
+      this.optionsLoadRetry = 0;
       this.setState({ objectOptions });
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
@@ -144,6 +175,7 @@ export default class ThemedDropdown extends (window.visRxWidget as typeof VisRxW
         this.props.context.logError(`ThemedDropdown: cannot resolve common.states for "${stateId}": ${message}`);
       }
       this.setState({ objectOptions: [] });
+      this.scheduleOptionsReload(stateId);
     }
   }
 

@@ -2,6 +2,7 @@
   "vis2_themed_set_label": "vis2-themed",
   "themed_checkbox_label": "Beschriftung",
   "themed_checkbox_oid": "Object ID",
+  "vis2-themed_themed_checkbox_oid": "Object ID",
   "themed_checkbox_default_text": "Checkbox",
   "themed_checkbox_use_accent": "Akzentfarbe verwenden",
   "themed_button_label": "Beschriftung",
@@ -44,7 +45,7 @@
   "themed_dropdown_placeholder": "Platzhalter",
   "themed_dropdown_default_placeholder": "Bitte waehlen",
   "themed_dropdown_options": "Fallback-Optionen",
-  "themed_dropdown_options_hint": "Wenn das Zielobjekt common.states definiert, werden diese Eintraege automatisch verwendet. Sonst eine Option pro Zeile im Format Label|wert eintragen.",
+  "themed_dropdown_options_hint": "Wenn das Zielobjekt common.states definiert, werden diese Eintraege automatisch verwendet. Dieses Feld nur als Fallback nutzen: eine Option pro Zeile im Format Label|wert.",
   "themed_dropdown_use_accent": "Akzentfarbe verwenden",
   "themed_dropdown_disabled": "Deaktiviert",
   "themed_dropdown_no_options": "Keine Optionen konfiguriert"
